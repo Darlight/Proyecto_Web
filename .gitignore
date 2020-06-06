@@ -2,6 +2,8 @@ node_modules/
 .DS_Store
 prenv/
 *.pyc*
+envi/
+*.pyc*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
