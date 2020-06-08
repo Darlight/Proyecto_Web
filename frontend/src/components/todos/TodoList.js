@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getTodos, deleteTodo } from '../../actions/todos';
+import { getTodos } from '../../actions/getTodos';
+import { deleteTodo } from '../../actions/deleteTodo';
 
 class TodoList extends Component {
   componentDidMount() {

@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Modal from '../layout/Modal';
 import history from '../../history';
-import { getTodo, deleteTodo } from '../../actions/todos';
+import { getTodo } from '../../actions/getTodos'; 
+import { deleteTodo } from '../../actions/deleteTodo';
 
 class TodoDelete extends Component {
   componentDidMount() {

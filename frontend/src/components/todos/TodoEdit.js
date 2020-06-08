@@ -1,7 +1,8 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getTodo, editTodo } from '../../actions/todos';
+import { getTodo } from '../../actions/getTodos'; 
+import { editTodo } from '../../actions/editTodo';
 import TodoForm from './TodoForm';
 
 class TodoEdit extends Component {

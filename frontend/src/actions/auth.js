@@ -1,16 +1,7 @@
 import axios from 'axios';
 import { stopSubmit } from 'redux-form';
 
-import {
-  USER_LOADING,
-  USER_LOADED,
-  AUTH_ERROR,
-  LOGIN_SUCCESS,
-	LOGIN_FAIL,
-	LOGOUT_SUCCESS,
-	REGISTER_FAIL,
-	REGISTER_SUCCESS,
-} from './types';
+import * as types from '../types/auth';
 
 export const loadUser = () => async (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
@@ -18,12 +9,12 @@ export const loadUser = () => async (dispatch, getState) => {
   try {
     const res = await axios.get('/api/auth/user', tokenConfig(getState));
     dispatch({
-      type: USER_LOADED,
+      type: types.USER_LOADED,
       payload: res.data
     });
   } catch (err) {
     dispatch({
-      type: AUTH_ERROR
+      type: types.AUTH_ERROR
     });
   }
 };
@@ -40,12 +31,12 @@ export const login = ({ username, password }) => async dispatch => {
   try {
     const res = await axios.post('/api/auth/login', body, config);
     dispatch({
-      type: LOGIN_SUCCESS,
+      type: types.LOGIN_SUCCESS,
       payload: res.data
     });
   } catch (err) {
     dispatch({
-      type: LOGIN_FAIL
+      type: types.LOGIN_FAIL
     });
     dispatch(stopSubmit('loginForm', err.response.data));
   }
@@ -70,7 +61,7 @@ export const tokenConfig = getState => {
 export const logout = () => async (dispatch, getState) => {
   await axios.post('/api/auth/logout', null, tokenConfig(getState));
   dispatch({
-    type: LOGOUT_SUCCESS
+    type: types.LOGOUT_SUCCESS
   });
 };
 
@@ -86,12 +77,12 @@ export const register = ({ username, email, password }) => async dispatch => {
   try {
     const res = await axios.post('/api/auth/register', body, config);
     dispatch({
-      type: REGISTER_SUCCESS,
+      type: types.REGISTER_SUCCESS,
       payload: res.data
     });
   } catch (err) {
     dispatch({
-      type: REGISTER_FAIL
+      type: types.REGISTER_FAIL
     });
     dispatch(stopSubmit('registerForm', err.response.data));
   }
